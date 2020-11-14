@@ -35,16 +35,16 @@ RSpec.feature 'Events', type: :feature do
       expect(page).to have_content('Edit Event')
     end
 
-    # scenario 'destroy event', js: true do
-    #   event = create(:event)
-    #   visit events_path
-    #   accept_alert do
-    #     click_link 'Destroy'
-    #   end
+    scenario 'destroy event', js: true do
+      event = create(:event)
+      visit events_path
+      accept_alert do
+        click_link 'Destroy'
+      end
 
-    #   expect(page).to have_content('Event destroyed successfull')
-    #   expect(Event.count).to eq(0)
-    # end
+      expect(page).to have_content('Event destroyed successfull')
+      expect(Event.count).to eq(0)
+    end
 
   end
 
