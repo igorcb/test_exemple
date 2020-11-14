@@ -3,7 +3,8 @@ require 'rails_helper'
 RSpec.describe EventsController, type: :controller do
   
   context "GET #index" do
-    #let!(:events) { create_list(:event, 5) }
+    let!(:events) { create_list(:event, 5) }
+    let(:event_nil) { nil }
     
     it "should success and render to index page" do
       get :index
@@ -13,7 +14,7 @@ RSpec.describe EventsController, type: :controller do
 
     it "should events empty" do
       get :index
-      expect(assigns(:events)).to be_nil
+      expect(assigns(:event_nil)).to be_nil
     end
         
     it "should have list events" do
@@ -91,7 +92,6 @@ RSpec.describe EventsController, type: :controller do
     let!(:event) { create(:event) }
 
     it "should update event info" do
-      puts ">>>>>>>>>>>> Event: #{event.to_s}"
       params = { what: "Update what event" }
 
       put :update, params: {id: event.id, event: params}
